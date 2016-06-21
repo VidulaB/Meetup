@@ -1,0 +1,158 @@
+body {
+    background: white;
+}
+
+h2 {
+    font-size: 170%;
+    padding: 1em;
+    width: 20em;
+    background: lightgray:
+    border-radius: 15px;
+}
+
+header {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+header {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+}
+
+input {
+    padding: .3em;
+    background: white;
+}
+
+
+
+paper-button.mybutton {
+    color: navy;
+    background-color: lightgray;
+    font-size: 75%;
+    text-align: center;
+    -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+}
+
+.main_center {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+.main_center {
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+}
+
+.meetup_header {
+	/*font-family: "Times New Roman", Georgia, Serif;*/
+	font-size: 180%;
+	display: block;
+	width: 100%;
+	background-color: lightgray;
+	color: navy;
+}
+
+@media only screen and (min-width: 768px) {
+  .meetup_header {
+  /*font-family: "Times New Roman", Georgia, Serif;*/
+  font-size: 180%;
+  display: block;
+  width: 600px;
+  background-color: lightgray;
+  color: navy;
+  }
+}
+
+/*
+.progress-bar {
+	width: 800px;
+	--paper-progress-active-color: #e91e63
+}
+*/
+.right_button {
+	text-align: right;
+	padding-top: 20px;
+
+	-moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+}
+
+.text-white { 
+	color: white;
+	font-size: 95%;
+    text-align: left;
+    font-weight: bold;
+ }
+
+.card_title {
+   color: maroon;
+   font-weight: bold;
+   display: block;
+   text-align: center;
+   padding-bottom: 2em;
+}
+
+.mydivclass {
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+.issues {
+	color: orange;
+	font-size: 95%;
+	font-style: oblique;
+	font-weight: bold;
+}
+
+.created_event {
+	font-size: 105%;
+	font-weight: bold;
+
+}
+
+.created_account {
+	font-size: 105%;
+	font-weight: bold;
+
+}
+
+p.close_paragraph {
+  margin: 0.25em;
+}
+
+p.section_heading {
+  color: maroon;
+  font-size: 115%;
+  font-style: underline;
+	font-weight: bold;
+  margin-top: 2em;
+  margin-bottom: .90em;
+}
+
+
+/*
+Quick note: some mobile browsers will select text if the user long presses on the screen. This is super useful for copying and pasting, but can be frustrating if a user didn’t intend to select any text.
+
+You can prevent this from happening using the user-select CSS property seen here:
+
+
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+user-select: none;
+
+*/
