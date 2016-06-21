@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Biography</title>
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
+    <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+
+    
+<style is="custom-style">
+    /* For mobile phones: */
+        paper-card{
+        width: 95%;
+        padding: 5%;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.bio_details {
+          width: 100%;
+          padding: 5%;
+          --paper-card-background-color: lightgray;
+          /*margin: 1%;*/
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+        paper-input {
+           padding-bottom: 35px;
+        }
+
+    /* For bigger screens (laptops, tablets etc.): */
+        @media only screen and (min-width: 768px) {
+        paper-card{
+        width: 600px;
+        padding: 40px;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.bio_details {
+          width: 500px;
+          padding: 35px;
+          --paper-card-background-color: lightgray;
+          margin: 25px;
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="main_center">
+      <header>
+         <span class="meetup_header">Meetup Event Planner</span>
+      </header>
+      
+      <section class="form">
+        <paper-card>
+        <section class="progress-bar">
+          <!--Seems like this could be a good place for a progress bar... -->
+          <paper-progress value="30"></paper-progress>
+        </section>
+          
+          <p id="name_header" class="text-white"></p>
+          <p class="text-white">We would love to get to know you more. Please create your profile by answering a few questions below.</p>
+          <p class="issues" id="Issues"></p>
+
+          <paper-card class="bio_details">
+             <span class="card_title">User account details</span>
+             <label for="contact_num">What is your contact number?</label>
+             <paper-input id="contact_num" name="contact_num" type="phone" size="50" autocomplete="phone"></paper-input>
+             <paper-tooltip for="contact_num">Please enter the best contact number to reach you.</paper-tooltip>
+
+             <label for="birthdate">What is your birthdate?</label>
+             <paper-input id="birthdate" name="birthdate" type="date"></paper-input>
+             <paper-tooltip for="birthdate">Please enter your birthdate. You can conveniently select your birthdate in the calendar.</paper-tooltip>
+
+             <label for="organization">What is the name of your organization / employer?</label>
+             <paper-input id="organization" name="organization" type="text" size=50></paper-input>
+             <paper-tooltip for="organization">Please enter the name of your organization or your employer.</paper-tooltip>
+
+             <label for="title">What is your job title?</label>
+             <paper-input id="title" name="title" type="text" size=50></paper-input>
+             <paper-tooltip for="title">What is your job title?</paper-tooltip>
+          
+             <label for="employer_website">What is the website address for your organization?</label>
+             <paper-input id="employer_website" name="employer_website" type="text" size="50" autocomplete="text" ></paper-input>
+             <paper-tooltip for="employer_website">Please enter the URL of your organization's website?</paper-tooltip>
+          </paper-card>
+
+          <p class="right_button">
+            <paper-button class="mybutton" raised active=true onclick="display_user_profile()">Next</paper-button>
+          </p>
+          
+        </paper-card>
+        <script type="text/javascript">
+             var currentName = localStorage.getItem('name_value');
+             var display_string = "Hello, " + currentName + " ! Welcome to the Meetup community!"
+             document.getElementById('name_header').innerHTML = display_string;
+        </script>
+
+      </section>
+
+    </div>
+
+  </body>
+</html>
