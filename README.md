@@ -8,8 +8,13 @@ Project: Meetup Planner
          3. display_profile.html
          4. events.html
          5. display_events.html
-         6. js/main.js
+         6. js/main.js (Minified script: js/main.min.js)
          7. css/main.css
+         
+         Build file:
+         1. gulpfile.js
+         
+         
          
 # Dependencies
 * Bower
@@ -17,5 +22,6 @@ Project: Meetup Planner
 # Building
 * Clone repository
 * Bower install
+* run gulp
 * Serve index.html via static file server
 
