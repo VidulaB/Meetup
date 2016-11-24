@@ -5,10 +5,24 @@
       
       var issues_found;
       var issues_message;
+      var invalid_dates;
 
+      issues_found = 0;
       function load_biography_form() {
+          document.getElementById('general_Issues').innerHTML = ""; 
+          if ((document.getElementById('name_value').value != "") &&
+              (document.getElementById('email_value').value != "") &&
+              (document.getElementById('new_password_value').value != "") &&
+              (document.getElementById('repeat_password_value').value != "")
+             )
+          {
           store_signup_data();
           document.location.href = "biography.html";
+          }
+          else
+          {
+           document.getElementById('general_Issues').innerHTML = ("Please enter all the required information. Required input fields are marked with a '*'."); 
+          }
       }
      
       function display_user_profile() {
@@ -17,8 +31,23 @@
       }
 
       function validate_eventcreation() {
+          document.getElementById('general_Issues').innerHTML = "";
+          if ((document.getElementById('event_title').value != "") &&
+              (document.getElementById('event_start_when').value != "") &&
+              (document.getElementById('event_end_when').value != "") && (invalid_dates != 1) &&
+              (document.getElementById('event_venue').value != "") &&
+              (document.getElementById('host_name').value != "") &&
+              (document.getElementById('host_email').value != "") && 
+              (document.getElementById('guest_list').value != "") 
+             )
+          {
           store_event_data();
           document.location.href = "display_event.html";
+          }
+          else
+          {
+           document.getElementById('general_Issues').innerHTML = ("Please enter valid information, and make sure to give all the required information. Required input fields are marked with a '*'."); 
+          }
       }
 
       function validate_eventhostdata() {
@@ -171,48 +200,49 @@
 
 function validate_name () {
    var inputval = document.getElementById("name_value");
-   document.getElementById('Issues').innerHTML = "";
+   document.getElementById('name_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.sign_up_form.name_value.focus();
-     document.getElementById('Issues').innerHTML = "Please enter your name.";
+     document.getElementById('name_Issues').innerHTML = ("Please enter your name.");
+     /*document.sign_up_form.name_value.focus();*/
    }
 }
 
 function validate_email () {
    var inputval = document.getElementById("email_value");
-   document.getElementById('Issues').innerHTML = "";
+   document.getElementById('email_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.sign_up_form.email_value.focus();
-     document.getElementById('Issues').innerHTML = "Please enter your email address.";
+     /*document.sign_up_form.email_value.focus();*/
+     document.getElementById('email_Issues').innerHTML = "Please enter your email address.";
    } 
-   else if ((!(inputval.value.match(/['@']/))) || (!(inputval.value.match(/['.']/)))) {
+   else
+   if ((inputval.value != "") && ((!(inputval.value.match(/['@']/))) || (!(inputval.value.match(/['.']/))))) {
      document.sign_up_form.email_value.focus();
-     document.getElementById('Issues').innerHTML = "Email address does not seem right. ";        
+     document.getElementById('email_Issues').innerHTML = "Email address does not seem right. ";        
    }
 }
 
 function validate_new_password () {
    var inputval = document.getElementById("new_password_value");
-   document.getElementById('Issues').innerHTML = "";
+   document.getElementById('new_password_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.sign_up_form.new_password_value.focus();
-     document.getElementById('Issues').innerHTML = "Please enter your password.";
+     /*document.sign_up_form.new_password_value.focus();*/
+     document.getElementById('new_password_Issues').innerHTML = "Please enter your password.";
    }
    else if (inputval.value.length < 8) {
      document.sign_up_form.new_password_value.focus();
      document.getElementById('new_password_value').value = "";
-     document.getElementById('Issues').innerHTML = "Password should have at least 8 characters. Your password is too short.";
+     document.getElementById('new_password_Issues').innerHTML = "Your password is too short. Password should have at least 8 characters.";
    }
    else if (inputval.value.length > 15) {
      document.sign_up_form.new_password_value.focus();
      document.getElementById('new_password_value').value = "";
-     document.getElementById('Issues').innerHTML = "Password should contain at the most 15 characters. Your password is too long.";
+     document.getElementById('new_password_Issues').innerHTML = "Password should contain at the most 15 characters. Your password is too long.";
    }
    else if (!(inputval.value.match(/[a-z]/)) ||
             !(inputval.value.match(/[A-Z]/)) ||
             !(inputval.value.match(/[0-9]/))
            ) {
-          document.getElementById('Issues').innerHTML =  "Password should be a combination of lowercase letter, uppercase letters, and numbers. ";
+          document.getElementById('new_password_Issues').innerHTML =  "Password should be a combination of lowercase letter, uppercase letters, and numbers. ";
           document.getElementById('new_password_value').value = "";
           document.sign_up_form.new_password_value.focus();
         } 
@@ -222,32 +252,36 @@ function validate_repeat_password () {
    var inputval = document.getElementById("repeat_password_value");
    var newpassword = document.getElementById("new_password_value");
 
-   document.getElementById('Issues').innerHTML = "";
+   document.getElementById('repeat_password_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.sign_up_form.repeat_password_value.focus();
-     document.getElementById('Issues').innerHTML = "Please enter your password.";
+     /*document.sign_up_form.repeat_password_value.focus();*/
+     document.getElementById('repeat_password_Issues').innerHTML = "Please enter your password.";
    }
    else if (inputval.value !== newpassword.value) {
      document.sign_up_form.repeat_password_value.focus();
      document.getElementById('repeat_password_value').value = "";
-     document.getElementById('Issues').innerHTML = "Repeat password does not match your previously entered password. Please try again.";
+     document.getElementById('repeat_password_Issues').innerHTML = "Repeat password does not match your previously entered password. Please try again.";
    }   
 }
 
 function validate_event_title () {
    var inputval = document.getElementById("event_title");
 
+   document.getElementById('event_title_Issues').innerHTML = "";
+   
    if(inputval.value === "") {
-     document.event_form.event_title.focus();
-     document.getElementById('Issues').innerHTML = "Please enter the title of your event.";
+     document.getElementById('event_title_Issues').innerHTML = "Please enter the title of your event.";
    }
+   
 }
 
 function validate_event_start_when () {
    var inputval = document.getElementById("event_start_when");
+
+   document.getElementById('event_start_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.event_form.event_start_when.focus();
-     document.getElementById('Issues').innerHTML = "Please enter the starting date and time.";
+     /*document.event_form.event_start_when.focus();*/
+     document.getElementById('event_start_Issues').innerHTML = "Please enter the starting date and time.";
    }
 }
 
@@ -255,29 +289,32 @@ function validate_event_end_when () {
    var inputval = document.getElementById("event_end_when");
    var start_datetime_value = document.getElementById("event_start_when");
    /*document.write(inputval.value);*/
+   
 
+   var start_date = new Date(start_datetime_value.value);
+   var end_date = new Date(inputval.value);
+   invalid_dates = 0;
+   document.getElementById('event_end_Issues').innerHTML = "";
    if(inputval.value === "") {
-     document.event_form.event_end_when.focus();
-     document.getElementById('Issues').innerHTML = "Please enter the ending date and time.";
+     /*document.event_form.event_end_when.focus();*/
+     document.getElementById('event_end_Issues').innerHTML = "Please enter the ending date and time.";
    }
-   else if (!((inputval.value - start_datetime_value) === NaN) &&
-            !(((inputval.value - start_datetime_value) <= 0) ||
-              (inputval.value <= start_datetime_value))
-           ) {
-           document.getElementById('Issues').innerHTML = "Event is ending before it starts. Please enter valid dates and times";
-           document.getElementById('event_start_when').focus();
-        }
+   else if (start_date > end_date)
+   {
+    invalid_dates = 1;
+    document.getElementById('event_end_Issues').innerHTML = "Event is ending before it starts. Please enter valid dates and times";
+   }
+   
 }
 
 function validate_event_venue () {
-   var inputval = document.getElementById("event_venue");
-   
+   var inputval = document.getElementById("event_venue");   
+   var autocomplete = new google.maps.places.Autocomplete(inputval);
+
+   document.getElementById('event_venue_Issues').innerHTML = "";
    if(inputval.value === "") {
-      document.event_form.event_venue.focus();
-      document.getElementById('Issues').innerHTML = "Please enter the venue.";
-   }
-   else {
-      document.getElementById('Issues').innerHTML = "";
+      /*document.event_form.event_venue.focus();*/
+      document.getElementById('event_venue_Issues').innerHTML = "Please enter the venue.";
    }
 }
 
@@ -286,13 +323,15 @@ function validate_host_name () {
    var inputval = document.getElementById("host_name");
    re = /[a-zA-Z]/;
 
-   if(inputval.value === null) {
-      document.event_form.host_name.focus();
-      document.getElementById('Issues').innerHTML = "Please enter the name of the contact.";
+   if((inputval.value === null) ||
+      (inputval.value === "")
+      ) {
+      /*document.event_form.host_name.focus();*/
+      document.getElementById('host_name_Issues').innerHTML = "Please enter the name of the contact.";
    }
    else if (!(inputval.value.match(re))) {
-           document.event_form.host_name.focus();
-           document.getElementById('Issues').innerHTML = "Host name is invalid. ";
+           /*document.event_form.host_name.focus();*/
+           document.getElementById('host_name_Issues').innerHTML = "Host name is invalid. ";
            /*document.getElementById("host_name").focus();*/
            }
 }
@@ -301,13 +340,12 @@ function validate_host_phone () {
    var inputval = document.getElementById("host_phone");
 
    if(inputval.value === "") {
-      document.event_form.host_phone.focus();
-      document.getElementById('Issues').innerHTML = "Please enter the phone number of the contact.";
+      /*document.event_form.host_phone.focus();*/
+      document.getElementById('host_phone_Issues').innerHTML = "Please enter the phone number of the contact.";
    }
    else if (!(inputval.value.match(/[0-9]/))) {
-      document.event_form.host_phone.focus();
-      document.getElementById('Issues').innerHTML = "Contact number is invalid.";
-      
+      /*document.event_form.host_phone.focus();*/
+      document.getElementById('host_phone_Issues').innerHTML = "Contact number is invalid.";
    }
 }
 
@@ -315,28 +353,29 @@ function validate_host_email () {
     var inputval = document.getElementById("host_email");
 
     if(inputval.value === "") {
-      document.event_form.host_email.focus();
-      document.getElementById('Issues').innerHTML = "Please enter the email address of the contact.";
+      /*document.event_form.host_email.focus();*/
+      document.getElementById('host_email_Issues').innerHTML = "Please enter the email address of the contact.";
    }
    else if (!(inputval.value.match(/[a-zA-Z]/)) ||
             !(inputval.value.match(/\@/)) ||
             !(inputval.value.match(/\./)) ) {
-           document.getElementById('Issues').innerHTML = "Email address is invalid. ";
-           document.getElementById('host_email').focus();
+           document.getElementById('host_email_Issues').innerHTML = "Email address is invalid. ";
+           /*document.getElementById('host_email').focus();*/
         }
 }
 
 function validate_guest_emails () {
     var inputval = document.getElementById("guest_list");
 
+    document.getElementById('guest_list_Issues').innerHTML = "";
     if(inputval.value === "") {
-      document.event_form.guest_list.focus();
-      document.getElementById('Issues').innerHTML = "Please enter the email addresses of the guests.";
+      /*document.event_form.guest_list.focus();*/
+      document.getElementById('guest_list_Issues').innerHTML = "Please enter the email addresses of the guests.";
    }
    else if (!(inputval.value.match(/[a-zA-Z]/)) ||
             !(inputval.value.match(/\@/)) ||
             !(inputval.value.match(/\./)) ) {
-           document.getElementById('Issues').innerHTML = "Invalid guest list. ";
-           document.getElementById('guest_list').focus();
+           document.getElementById('guest_list_Issues').innerHTML = "Invalid guest list. ";
+           /*document.getElementById('guest_list').focus();*/
         }
 }
