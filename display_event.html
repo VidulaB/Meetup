@@ -2,20 +2,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="build/css/main.min.css">
 
     <title>Event Display</title>
 
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="js/main.min.js"></script>
+    <script src="build/js/main.min.js"></script>
 
     <link rel="import" href="bower_components/paper-card/paper-card.html">
-    <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/paper-menu/paper-menu.html">
-    <link rel="import" href="bower_components/paper-listbox/paper-listbox.html">
-    <link rel="import" href="bower_components/paper-item/paper-item.html">
-    <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
     <link rel="import" href="bower_components/paper-progress/paper-progress.html">
     
     
@@ -105,7 +100,7 @@
 
       <paper-card>
          <section class="progress-bar">
-            <!--Seems like this could be a good place for a progress bar... -->
+            <!--progress bar -->
             <paper-progress value="100"></paper-progress>
          </section>
 
@@ -166,6 +161,11 @@
              var display_string = currentName + ", ";
              document.getElementById('call_name').innerHTML = display_string;
       </script>
+
+      <p class="right_button">
+            <paper-button class="mybutton" raised active=true onclick="load_event_form()">Create a new event</paper-button>
+      </p>    
+
 
     </div>
   </body>

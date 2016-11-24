@@ -1,0 +1,29 @@
+{
+  "name": "meetup",
+  "version": "1.0.0",
+  "description": "Meetup event planner project",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VidulaB/Meetup.git"
+  },
+  "author": "Vidula Bhandarkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VidulaB/Meetup/issues"
+  },
+  "homepage": "https://github.com/VidulaB/Meetup#readme"
+}

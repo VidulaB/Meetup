@@ -2,15 +2,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="build/css/main.min.css">
+    
     <title>Biography</title>
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="js/main.min.js"></script>
-
+    <script src="build/js/main.min.js"></script>
+ 
     <link rel="import" href="bower_components/paper-card/paper-card.html">
-    <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
     <link rel="import" href="bower_components/paper-progress/paper-progress.html">
 
     
@@ -36,9 +35,6 @@
           width: 100%;
           --paper-progress-active-color: #e91e63;
           padding-bottom: 25px;
-        }
-        paper-input {
-           padding-bottom: 35px;
         }
 
     /* For bigger screens (laptops, tablets etc.): */
@@ -78,7 +74,7 @@
       <section class="form">
         <paper-card>
         <section class="progress-bar">
-          <!--Seems like this could be a good place for a progress bar... -->
+          <!--progress bar -->
           <paper-progress value="30"></paper-progress>
         </section>
           
@@ -88,26 +84,28 @@
 
           <paper-card class="bio_details">
              <span class="card_title">User account details</span>
-             <label for="contact_num">What is your contact number?</label>
-             <paper-input id="contact_num" name="contact_num" type="phone" size="50" autocomplete="phone"></paper-input>
-             <paper-tooltip for="contact_num">Please enter the best contact number to reach you.</paper-tooltip>
+             <label for="contact_num">What is your contact number?</label><br/>
+             <input id="contact_num" name="contact_num" type="text" size="50" autocomplete="phone" autofocus></input>
+             <br/><br/><br/>
+             
+             <label for="birthdate">What is your birthdate?</label><br/>
+             <input id="birthdate" name="birthdate" type="date"></input>
+             <br/><br/><br/>
 
-             <label for="birthdate">What is your birthdate?</label>
-             <paper-input id="birthdate" name="birthdate" type="date"></paper-input>
-             <paper-tooltip for="birthdate">Please enter your birthdate. You can conveniently select your birthdate in the calendar.</paper-tooltip>
+             <label for="organization">What is the name of your organization / employer?</label><br/>
+             <input id="organization" name="organization" type="text" size=50></input>
+             <br/><br/><br/>
 
-             <label for="organization">What is the name of your organization / employer?</label>
-             <paper-input id="organization" name="organization" type="text" size=50></paper-input>
-             <paper-tooltip for="organization">Please enter the name of your organization or your employer.</paper-tooltip>
-
-             <label for="title">What is your job title?</label>
-             <paper-input id="title" name="title" type="text" size=50></paper-input>
-             <paper-tooltip for="title">What is your job title?</paper-tooltip>
+             <label for="title">What is your job title?</label><br/>
+             <input id="title" name="title" type="text" size=50></input>
+             <br/><br/><br/>
           
-             <label for="employer_website">What is the website address for your organization?</label>
-             <paper-input id="employer_website" name="employer_website" type="text" size="50" autocomplete="text" ></paper-input>
-             <paper-tooltip for="employer_website">Please enter the URL of your organization's website?</paper-tooltip>
+             <label for="employer_website">What is the website address for your organization?</label><br/>
+             <input id="employer_website" name="employer_website" type="text" size="50" autocomplete="text" ></input>
+             <br/><br/><br/>
+             
           </paper-card>
+
 
           <p class="right_button">
             <paper-button class="mybutton" raised active=true onclick="display_user_profile()">Next</paper-button>

@@ -2,17 +2,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="build/css/main.min.css">
 
     <title>Meetup Event Planner</title>
 
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="js/main.min.js"></script>
+    <script src="./build/js/main.min.js"></script>
+    
 
     <link rel="import" href="bower_components/paper-card/paper-card.html">
-    <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
     <link rel="import" href="bower_components/paper-progress/paper-progress.html">
     <link rel="import" href="bower_components/polymer/polymer.html">
     <link rel="import" href="bower_components/iron-component-page/iron-component-page.html">
@@ -41,9 +40,6 @@
           padding-bottom: 25px;
         }
 
-        paper-input {
-           padding-bottom: 35px;
-        }
 
     /* For bigger screens (laptops, tablets etc.): */
         @media only screen and (min-width: 768px) {
@@ -94,29 +90,38 @@
           <paper-card class="new_account_details">
           <span class="card_title">Sign up form</span>
           
-          <label for="name_value">*What is your name?</label>
-          <paper-input id="name_value" name="name_value" type="text" size=50  autocomplete="name" required=true onblur="validate_name()" autofocus></paper-input>
-          <paper-tooltip for="name_value">Please enter your name (example: Firstname, Lastname)</paper-tooltip>
 
-          <label for="email_value">*What is your email address?</label>
-          <paper-input id="email_value" name="email_value" type="email" size=50  autocomplete="email" required=true onblur="validate_email()"></paper-input>
-          <paper-tooltip for="email_value">Please enter your email address (example: firstname@email.com)</paper-tooltip>
+          <label for="name_value">*What is your name?</label><br/>
+          
+          <input id="name_value" name="name_value" type="text" size=50  autocomplete="name" required=true onblur="validate_name()" autofocus></input>
+          
+          <br/><span class="issues" id="name_Issues"></span>
+          <br/><br/><br/>
 
-          <label for="new_password_value">*Please enter your password</label>
-          <paper-input id="new_password_value" name="new_password_value" type="password" required=true onblur="validate_new_password()"></paper-input>
-          <paper-tooltip for="new_password_value">
-             Please enter a valid password. 
-             Length of the password should be between 8 to 15 characters.
-             The password should be a combination of lowercase letters, uppercase letters, and numbers.
-          </paper-tooltip>
+          <label for="email_value">*What is your email address?</label><br/>
+          
+          <input id="email_value" name="email_value" type="email" size=50  autocomplete="email" required=true onblur="validate_email()"></input>
+          
+          <br/><span class="issues" id="email_Issues"></span>
+          <br/><br/><br/>
 
-          <label for="repeat_password_value">*Please re-enter your password for confirmation</label>
-          <paper-input id="repeat_password_value" name="repeat_password_value" type="password" required=true onblur="validate_repeat_password()"></paper-input>
-          <paper-tooltip for="repeat_password_value">
-             Please re-enter your password. Repeat password should be exactly the same as your new password.
-          </paper-tooltip>
+          <label for="new_password_value">*Please enter your password</label><br/>
+          
+          <input id="new_password_value" name="new_password_value" type="password" required=true onblur="validate_new_password()"></input>
+          <br/><span class="issues" id="new_password_Issues"></span>
+          <br/><br/><br/>
+
+          <label for="repeat_password_value">*Please re-enter your password for confirmation</label><br/>
+          
+          <input id="repeat_password_value" name="repeat_password_value" type="password" required=true onblur="validate_repeat_password()"></input>
+          <br/><span class="issues" id="repeat_password_Issues"></span>
+          <br/><br/><br/>
 
           </paper-card>
+
+          <br/>
+          <span class="issues" id="general_Issues"></span>
+          <br/>
 
           <p class="right_button">
             <paper-button class="mybutton" id="signupFormButton" raised active=true onclick="load_biography_form()">Next</paper-button>
