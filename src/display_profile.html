@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <title>Event Display</title>
+
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="js/main.min.js"></script>
+
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+    
+    
+    <style is="custom-style">
+        /* For mobile phones: */
+        paper-card{
+        width: 95%;
+        padding: 5%;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.new_account_details {
+          width: 100%;
+          padding: 5%;
+          --paper-card-background-color: lightgray;
+          /*margin: 1%;*/
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+
+    /* For bigger screens (laptops, tablets etc.): */
+        @media only screen and (min-width: 768px) {
+        paper-card{
+        width: 600px;
+        padding: 40px;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.new_account_details {
+          width: 500px;
+          padding: 35px;
+          --paper-card-background-color: lightgray;
+          margin: 25px;
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+      }
+
+    </style>
+    
+  </head>
+
+  <body>
+    
+    <div class="main_center">
+      <header>
+         <span class="meetup_header">Meetup Event Planner</span>
+      </header>
+      
+
+      <script type="text/javascript">
+      var data_key;
+      var storage_length = localStorage.length;
+      if (storage_length > 0) {
+         var currentName = localStorage.getItem('name_value');
+         var currentEmail = localStorage.getItem('email_value');
+         var currentContact = localStorage.getItem('contact_num');
+         var currentOrganization = localStorage.getItem('organization');
+         var currentBirthdate = localStorage.getItem('birthdate');
+         var currentJobTitle = localStorage.getItem('title');
+         var currentWebsite = localStorage.getItem('employer_website');
+      }
+      </script>
+
+      
+      <paper-card>
+         <section class="progress-bar">
+            <paper-progress value="45"></paper-progress>
+         </section>
+
+         <p class="text-white"><span id="call_name" class="text-white"></span>Your profile has been successfully created! Please take a look.</p>
+
+         <paper-card class="new_account_details">
+
+         <div>
+        
+         <span class="card_title">Account details</span>
+         
+         <p class="close_paragraph"><span class="created_account"><script type="text/javascript">document.write(currentName);</script></span></p>
+         
+         
+         <p class="close_paragraph"><span class="created_account">Email:</span> <script type="text/javascript">document.write(currentEmail);</script></p>
+         
+         <p class="close_paragraph">
+            <span class="created_account" id="valid_phone"></span> 
+            <script type="text/javascript">
+               if(currentContact !== "" && currentContact !== "undefined") {
+                 document.getElementById('valid_phone').innerHTML = "Phone: ";
+                 document.write(currentContact);
+               }
+            </script>
+         </p>
+
+         <p class="close_paragraph">
+            <span class="created_account" id="valid_birthdate"></span> 
+            <script type="text/javascript">
+               if(currentBirthdate !== "" && currentBirthdate !== "undefined") {
+                 document.getElementById('valid_birthdate').innerHTML = "Birthdate: ";
+                 document.write(currentBirthdate);
+               }
+            </script>
+         </p>
+
+         <p class="close_paragraph">
+            <span class="created_account" id="valid_title"></span> 
+            <script type="text/javascript">
+               if(currentJobTitle !== "" && currentJobTitle !== "undefined") {
+                  document.getElementById('valid_title').innerHTML = "Job Title: ";
+                  document.write(currentJobTitle);
+               }
+            </script>
+         </p>
+
+         <p class="close_paragraph">
+           <span class="created_account" id="valid_org"></span>
+           <script type="text/javascript">
+             if(currentOrganization !== "" && currentOrganization !== "undefined") {
+              document.getElementById('valid_org').innerHTML = "Organization: ";
+              document.write(currentOrganization);
+            }
+         </script></p>
+
+         <p class="close_paragraph">
+           <script type="text/javascript">
+             if(currentWebsite !== "" && currentWebsite !== "undefined") {
+               document.write("( " + currentWebsite + " )");
+             }
+           </script></p>
+
+         </div>
+         </paper-card>
+         
+         <p class="right_button">
+            <paper-button class="mybutton" raised active=true onclick="load_event_form()">Continue</paper-button>
+        </p>     
+         
+
+      </paper-card>
+
+    </div>
+  </body>
+</html>
