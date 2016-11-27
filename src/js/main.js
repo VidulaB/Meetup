@@ -7,6 +7,7 @@
       var issues_message;
       var invalid_dates;
       var invalid_start_date;
+      var invalid_host_email;
       var invalid_guestlist;
 
       issues_found = 0;
@@ -42,7 +43,7 @@
               (document.getElementById('event_end_when').value != "") && (invalid_dates != 1) &&
               (document.getElementById('event_venue').value != "") &&
               (document.getElementById('host_name').value != "") &&
-              (document.getElementById('host_email').value != "") && 
+              (document.getElementById('host_email').value != "") && (invalid_host_email != 1) &&
               (document.getElementById('guest_list').value != "") && (invalid_guestlist != 1) 
              )
           {
@@ -417,6 +418,7 @@
       {
           var inputval = document.getElementById("host_email");
 
+          invalid_host_email = 0;
           document.getElementById('host_email_Issues').innerHTML = "";
           if(inputval.value === "")
           {
@@ -428,6 +430,7 @@
                   ) 
           {
               document.getElementById('host_email_Issues').innerHTML = "Email address is invalid. ";
+              invalid_host_email = 1;
           }
       }
 
