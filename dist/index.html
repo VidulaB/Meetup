@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <title>Meetup Event Planner</title>
+
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="js/main.min.js"></script>
+    
+
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/iron-component-page/iron-component-page.html">
+    
+    <style is="custom-style">
+    /* For mobile phones: */
+        paper-card{
+        width: 95%;
+        padding: 5%;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.new_account_details {
+          width: 100%;
+          padding: 5%;
+          --paper-card-background-color: lightgray;
+          /*margin: 1%;*/
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+
+
+    /* For bigger screens (laptops, tablets etc.): */
+        @media only screen and (min-width: 768px) {
+        paper-card{
+        width: 600px;
+        padding: 40px;
+        --paper-card-background-color: navy;
+        --paper-card-header-color: white;
+        margin: 0 auto;
+        text-align: left;
+        }
+        paper-card.new_account_details {
+          width: 500px;
+          padding: 35px;
+          --paper-card-background-color: lightgray;
+          margin: 25px;
+          text-align: left;
+        }
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: #e91e63;
+          padding-bottom: 25px;
+        }
+      }
+
+    </style>
+    
+
+  </head>
+
+  <body>
+    <div class="main_center">
+      <header>
+         <span class="meetup_header">Meetup Event Planner</span>
+      </header>
+      
+      <section class="form">
+      <form is="iron-form" name="sign_up_form" id="sign_up_form" method="POST" action="self" autocomplete="on" >
+        <paper-card>
+          <section class="progress-bar">
+             <paper-progress value="5"></paper-progress>
+          </section>
+          <p class="text-white">Welcome to Meetup Event Planner - a convenient tool to organize your event! </p>
+          <p class="text-white">Don't have an account with Meetup? Please sign up here before you begin.</p>
+          <p class="issues" id="Issues"></p>
+
+          <paper-card class="new_account_details">
+          <span class="card_title">Sign up form</span>
+          
+
+          <label for="name_value">*What is your name?</label><br/>
+          
+          <input id="name_value" name="name_value" type="text" size=30  autocomplete="name" required=true onblur="validate_name()" autofocus></input>
+          
+          <br/><span class="issues" id="name_Issues"></span>
+          <br/><br/><br/>
+
+          <label for="email_value">*What is your email address?</label><br/>
+          
+          <input id="email_value" name="email_value" type="email" size=30  autocomplete="email" required=true onblur="validate_email()"></input>
+          
+          <br/><span class="issues" id="email_Issues"></span>
+          <br/><br/><br/>
+
+          <label for="new_password_value">*Please enter your password</label><br/>
+          
+          <input id="new_password_value" name="new_password_value" type="password" size=30 required=true onblur="validate_new_password()"></input>
+          <br/><span class="issues" id="new_password_Issues"></span>
+          <br/><br/><br/>
+
+          <label for="repeat_password_value">*Please re-enter your password for confirmation</label><br/>
+          
+          <input id="repeat_password_value" name="repeat_password_value" type="password" size=30 required=true onblur="validate_repeat_password()"></input>
+          <br/><span class="issues" id="repeat_password_Issues"></span>
+          <br/><br/><br/>
+
+          </paper-card>
+
+          <br/>
+          <span class="issues" id="general_Issues"></span>
+          <br/>
+
+          <p class="right_button">
+            <paper-button class="mybutton" id="signupFormButton" raised active=true onclick="load_biography_form()">Next</paper-button>
+          </p>          
+        
+        </paper-card>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>

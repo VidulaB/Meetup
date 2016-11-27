@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <title>Event Creation form</title>
+
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="js/main.min.js"></script>
+ 
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en"></script>
+
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
+    <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+
+    <style is="custom-style">
+        /* For mobile phones: */
+        paper-card{
+          width: 95%;
+          padding: 5%;
+          --paper-card-background-color: navy;
+          --paper-card-header-color: white;
+          /*margin: 25px;*/
+          margin 0 auto;
+          text-align: left;
+        }
+
+        paper-card.event-details {
+          width: 100%;
+          /*padding: 5%;*/
+          --paper-card-background-color: lightgray;
+          /*margin: 25px;*/
+          
+          text-align: left;
+        }
+
+        paper-card.host-details {
+           width: 100%;
+           padding: 5%;
+           --paper-card-background-color: lightgray;
+           /*margin: 25px;*/
+           text-align: left;
+        }
+
+        paper-progress {
+           display: block;
+           width: 100%;
+           --paper-progress-active-color: #e91e63;
+           padding-bottom: 25px;
+        }
+
+        /* For bigger screens (laptops, tablets etc.): */
+        @media only screen and (min-width: 768px) {
+          paper-card{
+            width: 600px;
+            --paper-card-background-color: navy;
+            --paper-card-header-color: white;
+            /*margin: 25px;*/
+            margin 0 auto;
+            padding: 40px;
+            text-align: left;
+          }
+
+          paper-card.event-details {
+            width: 500px;
+            padding: 35px;
+            --paper-card-background-color: lightgray;
+            margin: 25px;
+            text-align: left;
+          }
+
+          paper-card.host-details {
+            width: 500px;
+            padding: 35px;
+            --paper-card-background-color: lightgray;
+            margin: 25px;
+            text-align: left;
+          }
+
+          paper-progress {
+            display: block;
+            width: 100%;
+            --paper-progress-active-color: #e91e63;
+            padding-bottom: 25px;
+          }
+        }
+
+    </style>
+    
+  </head>
+
+  <body>
+    <div class="main_center">
+      <header>
+         <span class="meetup_header">Meetup Event Planner</span>
+      </header>
+      
+      <section class="form">
+      <form is="iron-form" name="event_form" id="event_form" method="POST" action="self">
+        <paper-card>
+          <section class="progress-bar">
+            <!-- progress bar -->
+            <paper-progress value="60"></paper-progress>
+          </section>
+
+          <p class="text-white">Are you planning an event? We will be happy to help!</p>
+          <p class="text-white">Let's start by entering a few details here...</p>
+          <p class="issues" id="Issues"></p>
+
+          <paper-card class="event-details">  
+             <span class="card_title">Event information</span> 
+
+             <label for="event_title">*What is the title of your event?</label><br/>
+             <input id="event_title" name="event_title" type="text" size="30" autocomplete=on required=true autofocus onblur="validate_event_title ()"></input>
+             <br/><span class="issues" id="event_title_Issues"></span>
+             <br/><br/><br/>             
+
+             <label for="event_start_when">*When does the event start? Please select a date and time</label><br/>
+             <input id="event_start_when" name="event_start_when" type="datetime-local"  autocomplete=on required=true onblur="validate_event_start_when ()"></input>
+             <br/><span class="issues" id="event_start_Issues"></span>
+             <br/><br/><br/>
+
+             <label for="event_end_when">*When does it end? Please select a date and time</label><br/>
+             <input id="event_end_when" name="event_end_when" type="datetime-local"  autocomplete=on required=true onblur="validate_event_end_when ()"></input>
+             <br/><span class="issues" id="event_end_Issues"></span>
+             <br/><br/><br/>
+
+             <label for="event_venue">*What is the location or venue?</label><br/>
+             <input id="event_venue" name="event_venue" type="text" size="30" autocomplete=on required=true onblur="validate_event_venue ()"></input>
+             <br/><span class="issues" id="event_venue_Issues"></span>
+             <br/><br/><br/>
+          
+             <label for="event_type">What kind of event is it?</label>
+             <select id="event_type">
+                <option value="anniversary">Anniversary</option>
+                <option value="birthday">Birthday</option>
+                <option value="concert">Concert</option>
+                <option value="conference">Conference</option>
+                <option value="graduation">Graduation</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="meetup">Meetup</option>
+                <option value="talk">Talk</option>
+                <option value="show">Show</option>
+                <option value="expo">Expo/Exhibition</option>
+                <option value="other">Other</option>
+             </select>
+             <br/><br/><br/>
+
+             <label for="event_desc">Please describe your event briefly</label><br/>
+             <input id="event_desc" name="event_desc" type="text" size="30" autocomplete=on>
+             </input><br/><br/>
+           
+          </paper-card>
+
+          <p class="text-white"><span>Please verify (and update if necessary,) a few details about the host here ...</span></p>
+          <paper-card class="host-details">
+             <span class="card_title">Organizer information</span>
+
+             <label for="host_name">*What is the contact name for the event?</label><br/>
+             <input id="host_name" name="name" type="text" size="30" autocomplete="name" required=true onblur="validate_host_name()"></input>
+             
+             <br/><span class="issues" id="host_name_Issues"></span>
+             <br/><br/><br/>
+
+             <label for="host_org">Which organization does the contact person represent?</label><br/>
+             <input id="host_org" name="host_org" type="text" size="30" autocomplete="host_org" required=true ></input>
+             <br/><br/><br/>
+
+             <label for="host_phone">What is the phone number of the contact person?</label><br/>
+             <input id="host_phone" name="host_phone" type="phone" size="30" autocomplete="tel" required=true ></input>
+             <br/><br/><br/>
+
+             <label for="host_email">*What is the email address of the host?</label><br/>
+             <input id="host_email" name="host_email" type="email" size="30" autocomplete="host_email" required=true  onblur="validate_host_email()"></input>
+             <br/><span class="issues" id="host_email_Issues"></span>
+             <br/><br/><br/>             
+
+             <label for="host_website">What is the URL of the event/organization's website?</label><br/>
+             <input id="host_website" name="host_website" type="url" size="30" autocomplete="host_website" ></input>
+             <br/><br/><br/>          
+
+             <label for="guest_list">*Please enter the email addresses of the guests here</label><br/>
+             <input id="guest_list" name="guest_list" type="datalist" size="30" autocomplete=on required=true onblur="validate_guest_emails()"></input>
+             <br/><span class="issues" id="guest_list_Issues"></span>
+             <br/><br/><br/>
+             
+          </paper-card>
+
+          <br/>
+          <span class="issues" id="general_Issues"></span>
+          <br/>
+
+          <p class="right_button">
+             <paper-button class="mybutton" raised active=true onclick="validate_eventcreation()">Next</paper-button>
+          </p>  
+        </form>
+
+        <script type="text/javascript">
+        
+                var currentName = localStorage.getItem('name_value');
+                var currentOrganization = localStorage.getItem('organization');
+                var currentContact = localStorage.getItem('contact_num');
+                var currentEmail = localStorage.getItem('email_value');
+                var currentWebsite = localStorage.getItem('employer_website');
+
+
+                document.getElementById('host_name').setAttribute('value', currentName);
+                document.getElementById('host_org').setAttribute('value', currentOrganization);
+                document.getElementById('host_phone').setAttribute('value', currentContact);
+                document.getElementById('host_email').setAttribute('value', currentEmail);
+                document.getElementById('host_website').setAttribute('value', currentWebsite);
+
+        </script>
+      </section>
+    </div>
+  </body>
+</html>
