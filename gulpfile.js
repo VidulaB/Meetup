@@ -33,7 +33,10 @@ gulp.task('browser-sync', function() {
    browserSync.init({
      server: {
        port: 'localhost:8888',
-       baseDir: "./dist/",
+       baseDir: "dist",
+       routes:{
+                 "/bower_components" : "bower_components"
+              },
        index: "index.html"
      }
    });
@@ -44,4 +47,4 @@ gulp.task('browser-sync', function() {
 });
 
 // default gulp task
-gulp.task('default', ['minify-css', 'scripts']);
+gulp.task('default', ['minify-css', 'scripts', 'browser-sync']);

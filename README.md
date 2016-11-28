@@ -29,7 +29,7 @@ Project: Meetup Planner
 
 # Building
 * Clone repository
-* cd Meetup-master
+* Change current directory to  Meetup-master
 * Bower install
 * run gulp
 * Serve dist/index.html via static file server
