@@ -1,7 +1,7 @@
 {
   "name": "meetup",
   "description": "Meetup event planner project",
-  "main": "index.html",
+  "main": "dist/index.html",
   "authors": [
     "Vidula Bhandarkar"
   ],
@@ -26,11 +26,12 @@
     "iron-form": "PolymerElements/iron-form#^1.0.0",
     "iron-label": "PolymerElements/iron-label#^1.0.0",
     "iron-validator-behavior": "PolymerElements/iron-validator-behavior#^1.0.0",
-    "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
-    "paper-listbox": "polymerelements/paper-listbox#^1.1.2",
-    "paper-item": "PolymerElements/paper-item#^1.1.4",
-    "paper-menu": "PolymerElements/paper-menu#^1.2.2",
-    "paper-tooltip": "PolymerElements/paper-tooltip#^1.1.2",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.5"
+    "paper-dialog": "PolymerElements/paper-dialog#^1.0.0",
+    "paper-listbox": "polymerelements/paper-listbox#^1.0.0",
+    "paper-item": "PolymerElements/paper-item#^1.0.0",
+    "paper-menu": "PolymerElements/paper-menu#^1.0.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^1.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^1.0.0"
   }
 }
